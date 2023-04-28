@@ -1,7 +1,7 @@
 <header class="page-header">
     <div class="header-content">
         <div class="logo">
-            <a href="/">
+            <a href="/" class="brand">
                 <img src="{{ url('/images/logo.png') }}" alt="Clean Theme">
                 Clean Theme
             </a>

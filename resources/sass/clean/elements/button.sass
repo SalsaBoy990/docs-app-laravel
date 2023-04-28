@@ -66,6 +66,29 @@ button.primary,
             color: $primary-dark
 
 
+button.secondary,
+.button.secondary
+    color: $black
+    background-color: $accent-light
+    border-color: $accent-light
+
+    &:hover
+        border-color: $accent-dark
+        background-color: $accent-dark
+        color: white
+
+
+    &.alt
+        color: $text
+        border-color: $primary-light
+        background-color: transparent
+
+        &:hover, &:focus
+            border-color: $primary-dark
+            background-color: white
+            color: $primary-dark
+
+
 button.danger,
 .button.danger
     color: white

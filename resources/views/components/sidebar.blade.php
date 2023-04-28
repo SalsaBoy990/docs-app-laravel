@@ -2,10 +2,10 @@
     <header>
         <h3 class="text-white">Table of Content</h3>
     </header>
-    <div class="padding-1">
+    <div class="padding-1 sidebar-content">
         Never trust anything that can think for itself if you can't see where it keeps its brain.
 
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto padding-left-0">
             <!-- Authentication Links -->
             @guest
                 @if (Route::has('login'))

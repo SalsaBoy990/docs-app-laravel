@@ -18,12 +18,13 @@
 
             <div class="section">
                 <button class="primary">Primary</button>
+                <button class="secondary">Secondary</button>
                 <button class="danger">Danger</button>
                 <button class="warning">Warning</button>
                 <button class="info">Information</button>
                 <button class="success">Success</button>
-                <button class="black-button">Button</button>
-                <button class="white-button">Button</button>
+                <button class="black-button">Black Button</button>
+                <button class="white-button">White Button</button>
                 <button disabled>Disabled</button>
             </div>
 
@@ -370,6 +371,7 @@
                 class provides buttons of all sizes and types.</p>
             <div class="section">
                 <button class="primary">Primary</button>
+                <button class="secondary">Secondary</button>
                 <button class="danger">Danger</button>
                 <button class="warning">Danger</button>
                 <button class="info">Information</button>
@@ -380,6 +382,7 @@
             </div>
             <div class="section">
                 <button class="alt primary">Cancel</button>
+                <button class="alt secondary">Cancel</button>
                 <button class="danger alt round-large">Button</button>
                 <button class="warning alt round-large">Button</button>
                 <button class="info alt round">Button</button>
