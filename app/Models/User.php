@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'permissions',
     ];
 
     /**
@@ -40,5 +41,28 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'permissions' => 'array'
+    ];
+
+    /**
+     * User has many categories
+     * this will be used for authorization
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
+
+    /**
+     * Name of the permissions
+     *
+     * @var array
+     */
+    public const PERMISSIONS = [
+        'upload' => 'upload',
+        'download' => 'download',
+        'upload_root' => 'upload_root'
     ];
 }
