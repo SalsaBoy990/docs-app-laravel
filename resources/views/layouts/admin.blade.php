@@ -13,8 +13,13 @@
     <link href="{{ url('css/trongate.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ url('css/app.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ url('css/prism.css') }}" rel="stylesheet" type="text/css"/>
-    <!-- Scripts -->
+
+    <!-- Styles, Scripts -->
     @vite(['resources/sass/main.sass', 'resources/js/app.js'])
+    @livewireStyles
+
+    <x-admin.head.tinymce-config/>
+
 </head>
 <body @scroll="setScrollToTop()">
 
@@ -26,7 +31,10 @@
 
         <div class="admin-content relative">
 
-            <x-sidebar></x-sidebar>
+            <?php if ( ! isset( $sidebar ) ) {
+                $sidebar = null;
+            } ?>
+            <x-admin.sidebar :sidebar="$sidebar"></x-admin.sidebar>
 
             @yield('content')
 
@@ -46,6 +54,10 @@
     <x-footer></x-footer>
 
 </div>
+
+@stack('modals')
+
+@livewireScripts
 
 <script src="{{ url('/js/prism.js') }}" type="text/javascript"></script>
 </body>

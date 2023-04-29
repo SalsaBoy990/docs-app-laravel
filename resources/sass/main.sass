@@ -38,7 +38,6 @@ header .fa
         display: inline-flex
 
 
-
 html.dark
     .scroll-to-top-button
         &:hover, &:focus
@@ -47,13 +46,13 @@ html.dark
     .admin
         .admin-content
             main, aside
-                background-color: rgba(255,255,255,0.05)
+                background-color: rgba(255, 255, 255, 0.05)
                 border-color: $gray-80
 
     .public
         .public-content
             main
-                background-color: rgba(255,255,255,0.05)
+                background-color: rgba(255, 255, 255, 0.05)
 
 
 .admin
@@ -61,11 +60,11 @@ html.dark
         width: 100%
         margin: 2em auto
         display: grid
-        grid-template-columns: 300px calc(100% - 300px)
+        grid-template-columns: 400px calc(100% - 400px)
         grid-template-areas: 'sidebar main-content'
         gap: 2em
 
-        @media screen and (max-width: 1230px)
+        @media screen and (max-width: 990px)
             grid-template-columns: 100%
             grid-template-areas: "main-content" "sidebar"
 
@@ -105,7 +104,7 @@ html.dark
                     margin: 0
 
             div.sidebar-content
-                padding: 1em
+                padding: 0
 
 
 .public
@@ -131,7 +130,6 @@ html.dark
                 h1
                     //font-size: $fs-36
                     margin: 0
-
 
 
 header.page-header
@@ -183,10 +181,54 @@ footer.page-footer
                 font-size: $fs-12
 
 
-
 .welcome-content
     height: 100px
 
     h1
         width: 95%
         margin: 0
+
+
+/* DROPDOWN */
+.caret
+    cursor: pointer
+    user-select: none
+
+    &::before
+        content: "\25B6"
+        color: black
+        display: inline-block
+        margin-right: 6px
+
+
+.active-list-item
+    @apply bg-gray-300
+
+
+/* rotate the arrow icon */
+.caret-down::before
+    transform: rotate(90deg)
+
+
+/* hide the nested ul */
+.nested
+    display: none
+
+    &.active
+        background-color: whitesmoke
+
+/* show the nested list */
+.active
+    display: block !important
+
+.active-category
+    background-color: gainsboro
+    border: 1px solid slategrey
+
+
+[x-cloak], .hidden
+    display: none !important
+
+fieldset
+    padding-left: 0
+    border: none

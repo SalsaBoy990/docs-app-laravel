@@ -29,7 +29,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Routes only for authenticated users...
 Route::group(
-    ['middleware' => ['auth', 'auth-session', 'verified'], 'prefix' => 'admin'],
+    ['middleware' => ['auth', 'verified'], 'prefix' => 'admin'],
     function () {
 
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');

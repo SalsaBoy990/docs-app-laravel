@@ -13,6 +13,8 @@ import {dropdownData} from "./clean/modules/dropdownData";
 import {ajaxSearchData} from "./clean/modules/ajaxSearchData";
 import {tabbedImagesData} from "./clean/modules/tabbedImagesData";
 
+import './custom';
+
 window.Alpine = Alpine;
 
 Alpine.data('data', data);
@@ -31,6 +33,7 @@ Alpine.data('tabsData', tabsData);
 Alpine.data('tabbedImagesData', tabbedImagesData);
 
 Alpine.start();
+
 
 
 
