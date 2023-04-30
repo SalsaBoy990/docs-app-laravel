@@ -23,6 +23,7 @@ class Category extends Model
         'content',
         'category_id',
         'user_id',
+//        'phonetic_name',
     ];
 
     /**

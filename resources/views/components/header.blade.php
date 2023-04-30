@@ -14,6 +14,11 @@
                             <i class="fa fa-home" aria-hidden="true"></i>Home
                         </a>
 
+                        <a href="{{ url('/admin/dashboard') }}">
+                            <i class="fa fa-tachometer" aria-hidden="true"></i>Dashboard
+                        </a>
+
+
                         <div
                             x-data="dropdownData"
                             class="dropdown-click"

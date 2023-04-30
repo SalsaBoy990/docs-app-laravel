@@ -37,11 +37,11 @@
             </fieldset>
 
             <div>
-                <button type="submit" class="button">
+                <button type="submit" class="primary">
                     <span wire:loading wire:target="updateCategory" class="animate-spin">&#9696;</span>
                     <span wire:loading.remove wire:target="updateCategory">{{ __('Frissít') }}</span>
                 </button>
-                <button type="button" class="alt" @click="isModalOpen = false">
+                <button type="button" class="primary alt" @click="isModalOpen = false">
                     Mégsem
                 </button>
             </div>

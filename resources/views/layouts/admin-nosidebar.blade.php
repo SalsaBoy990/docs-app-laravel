@@ -29,16 +29,10 @@
 
     <x-admin.banner/>
 
-    @yield('search')
 
     <div class="container">
 
-        <div class="admin-content relative">
-
-            <?php if ( ! isset( $sidebar ) ) {
-                $sidebar = null;
-            } ?>
-            <x-admin.sidebar :sidebar="$sidebar"></x-admin.sidebar>
+        <div class="admin-content admin-nosidebar relative">
 
             @yield('content')
 
@@ -66,3 +60,4 @@
 <script src="{{ url('/js/prism.js') }}" type="text/javascript"></script>
 </body>
 </html>
+

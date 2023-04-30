@@ -54,7 +54,8 @@ class Update extends Component
             function () {
                 $category = Category::findOrFail($this->categoryId);
                 $category->update([
-                    'name' => $this->name
+                    'name' => $this->name,
+//                    'phonetic_name' => metaphone($this->name)
                 ]);
             },
             $updateAttempts = 2

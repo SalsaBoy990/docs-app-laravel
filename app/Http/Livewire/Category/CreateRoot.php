@@ -67,6 +67,7 @@ class CreateRoot extends Component
             function () {
                 $category = [];
                 $category['name'] = $this->name;
+//                $category['phonetic_name'] = metaphone($this->name);
                 $category['category_id'] = null;
                 $category['user_id'] = auth()->user()->id;
 

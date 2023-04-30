@@ -58,11 +58,19 @@ html.dark
 .admin
     .admin-content
         width: 100%
-        margin: 2em auto
+        margin: 0.5em auto 0
         display: grid
-        grid-template-columns: 400px calc(100% - 400px)
+        grid-template-columns: 360px calc(100% - 392px)
         grid-template-areas: 'sidebar main-content'
         gap: 2em
+
+        &.admin-nosidebar
+            grid-template-columns: 1fr
+            grid-template-areas: 'main-content'
+
+            @media screen and (max-width: 990px)
+                grid-template-columns: 100%
+                grid-template-areas: "main-content"
 
         @media screen and (max-width: 990px)
             grid-template-columns: 100%
@@ -202,7 +210,7 @@ footer.page-footer
 
 
 .active-list-item
-    @apply bg-gray-300
+    background-color: whitesmoke
 
 
 /* rotate the arrow icon */
@@ -225,10 +233,69 @@ footer.page-footer
     background-color: gainsboro
     border: 1px solid slategrey
 
+html.dark
+    .caret::before
+        color: white
+
+    .active-list-item
+        background-color: $gray-80
+
+    .nested.active
+        background-color: $gray-80
+
+    .active-category
+        background-color: $black
+        border: 1px solid $gray-60
+
+/* DROPDOWN END */
 
 [x-cloak], .hidden
     display: none !important
 
 fieldset
-    padding-left: 0
+    padding: 0
     border: none
+
+.upload-to-root
+    display: flex
+    flex-wrap: wrap
+    column-gap: 1em
+    justify-content: space-between
+    align-items: center
+
+    label, button
+        margin-top: 0
+
+.breadcrumb
+    ol
+        list-style-type: none
+        display: flex
+        flex-wrap: wrap
+        gap: 0.5em
+        padding-left: 0
+        margin-bottom: 0
+        margin-top: 0
+        font-size: 14px
+
+
+.notification
+    margin-top: 0
+    margin-bottom: 0
+    padding-top: 0.5em
+    padding-bottom: 0.5em
+
+    .notification-outer
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+        align-items: center
+        justify-content: space-between
+
+        button
+            margin-top: 0
+
+        .notification-inner
+            display: flex
+            flex-direction: row
+            align-items: center
+            gap: 0.5em

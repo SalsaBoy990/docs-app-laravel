@@ -21,7 +21,7 @@
                       class="close-button fs-18 primary topright round-top-right text-white">
                     <i class="fa fa-times" aria-hidden="true"></i>
                 </span>
-            <h3 class="text-white">{{ $title }}</h3>
+            <h3 class="text-white h4">{{ $title }}</h3>
         </div>
 
         <!-- Modal body -->

@@ -27,11 +27,11 @@
             >
 
             <div>
-                <button type="submit" class="button">
+                <button type="submit" class="danger">
                     <span wire:loading wire:target="deleteCategory" class="animate-spin">&#9696;</span>
                     <span wire:loading.remove wire:target="deleteCategory">{{ __('Töröl') }}</span>
                 </button>
-                <button type="button" class="alt" @click="isModalOpen = false">
+                <button type="button" class="danger alt" @click="isModalOpen = false">
                     Mégsem
                 </button>
             </div>

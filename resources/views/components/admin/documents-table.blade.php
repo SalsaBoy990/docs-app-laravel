@@ -1,8 +1,8 @@
 <div>
     @if (count($documents) === 0)
-        <p class="py-8">Még nincs dokumentum feltöltve ehhez a kategóriához.</p>
+        <p>Még nincs dokumentum feltöltve ehhez a kategóriához.</p>
     @else
-        <table>
+        <table class="fs-14">
             <thead>
             <tr>
                 <th scope="col">{{ __('Fájl') }}</th>
@@ -15,23 +15,23 @@
                     <td>
 
                         @can('authorize_download_from_category', $selectedCategory)
-                            <h3>
+                            <h4 class="margin-top-0 margin-bottom-0-5">
                                 <a href="{{ $document->file_link }}" download>
                                     <i class="fa fa-download" aria-hidden="true"></i>
                                     {{ $document->view_name }}</a>
-                            </h3>
+                            </h4>
                             @if($document->file_link)
                                 <!--<img src="{{ $document->file_link }}" class="p-1 bg-white border rounded w-20"
                             alt="{{ $document->view_name }}" />-->
                             @endif
                         @else
-                            <h3>
+                            <h4 class="margin-top-0 margin-bottom-0-5">
                                 {{ $document->view_name }}
-                            </h3>
+                            </h4>
                             <div>Nincs letöltési jogod a kategóriához!</div>
                         @endcan
 
-                        <ul>
+                        <ul class="margin-top-bottom-0-5">
                             <li>Eredeti fájlnév: <b>{{ $document->original_filename }}</b></li>
                             <li>Verzió: <b>{{ $document->version }}</b></li>
                             <li>Méret: <b>{{ $document->filesize }}</b></li>
@@ -41,10 +41,10 @@
                     </td>
 
                     <td>
-                        <div>
+                        <div class="button-group">
 
-                            <div x-data="{ modalOpen: false }">
-                                <button @click="modalOpen = true" class="edit-button">
+                            <div x-data="modalData">
+                                <button @click="openModal()" class="primary">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </button>
 
@@ -76,7 +76,7 @@
 
                                         <div>
 
-                                            <div>
+                                            <div class="margin-top-1">
                                                 Feltöltött fájl:<br>
                                                 <b>{{ $document->file_link }}</b>
                                             </div>
@@ -97,15 +97,23 @@
 
 
                                         <button type="submit" class="button">Mentés</button>
+                                        <button
+                                            type="button"
+                                            class="alt"
+                                            @click="closeModal()"
+                                        >
+                                            {{ __('Mégsem') }}
+                                        </button>
+
                                     </form>
                                 </x-admin.modal>
                             </div>
 
-                            <div x-data="{ modalOpen: false }">
+                            <div x-data="modalData">
                                 <button type="button"
-                                        class="button-danger"
+                                        class="danger alt"
                                         title="Törlés"
-                                        @click="modalOpen = true">
+                                        @click="openModal()">
 
                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                 </button>
@@ -119,11 +127,18 @@
                                         @csrf
                                         @method('delete')
 
-                                        <div>{{ $document->view_name }}</div>
+                                        <h4>{{ $document->view_name }}</h4>
                                         <button type="submit"
-                                                class="button-danger"
+                                                class="danger"
                                                 title="Törlés">
                                             Törlés
+                                        </button>
+                                        <button
+                                            type="button"
+                                            class="alt"
+                                            @click="closeModal()"
+                                        >
+                                            {{ __('Mégsem') }}
                                         </button>
                                     </form>
                                 </x-admin.modal>

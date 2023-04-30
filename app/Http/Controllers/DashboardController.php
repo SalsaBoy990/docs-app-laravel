@@ -38,6 +38,7 @@ class DashboardController extends Controller
         // If exists in session, then use it
         $documents = Session::get('documents');
         $selectedCategory = Session::get('selectedCategory');
+        $searchResults = Session::get('searchResults');
 
         if (!$documents || !$selectedCategory) {
             // the default is the first category
@@ -57,6 +58,7 @@ class DashboardController extends Controller
             'categories' => $categories,
             'documents' => $documents,
             'selectedCategory' => $selectedCategory,
+            'searchResults' => $searchResults ?? [],
             'parentCategories' => array_reverse($parentCategories, true),
         ]);
     }

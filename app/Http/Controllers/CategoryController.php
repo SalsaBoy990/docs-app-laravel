@@ -71,6 +71,8 @@ class CategoryController extends Controller
         }
 
         $input = $request->all();
+//        $input['phonetic_name'] = metaphone($request->input('name'));
+
         $category->updateOrFail($input);
 
         // categories needs to be re-queried from the db

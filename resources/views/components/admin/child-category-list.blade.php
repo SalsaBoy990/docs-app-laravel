@@ -79,7 +79,7 @@
                         </div>
 
 
-                        <button type="submit" class="button">
+                        <button type="submit" class="primary">
                             Hozzáadás
                         </button>
 
@@ -185,7 +185,7 @@
     </div>
 
 
-    <ul class="no-bullets padding-left-1-5 margin-top-0 nested active">
+    <ul class="no-bullets padding-left-1-5 margin-top-0 margin-bottom-0 padding-bottom-0-5 padding-right-0 nested active">
         @if (count($childCategory->categories) > 0)
             @foreach ($childCategory->categories as $childCategory)
                 <x-child-category-list :childCategory="$childCategory"

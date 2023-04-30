@@ -44,9 +44,8 @@
             >
 
 
-            <div class="button-group">
-
-                <button type="submit" class="button">
+            <div>
+                <button type="submit" class="primary">
                     <span wire:loading wire:target="createCategory" class="animate-spin">&#9696;</span>
                     <span wire:loading.remove wire:target="createCategory">{{ __('Hozzáad') }}</span>
                 </button>
@@ -58,7 +57,6 @@
                 >
                     {{ __('Mégsem') }}
                 </button>
-
             </div>
 
         </form>
