@@ -64,5 +64,6 @@
 @livewireScripts
 
 <script src="{{ url('/js/prism.js') }}" type="text/javascript"></script>
+<script src="{{ url('/js/focus-trap.js') }}" type="text/javascript"></script>
 </body>
 </html>
