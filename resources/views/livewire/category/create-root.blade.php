@@ -16,7 +16,7 @@
     <x-admin.form-modal trigger="isModalOpen" title="{{ $title }}" id="{{ $modalId }}">
         <form wire:submit.prevent="createCategory">
 
-            <fieldset>
+            <fieldset class="margin-top-1">
                 <input wire:model.defer="name"
                        type="text"
                        class="{{ $errors->has('name') ? 'input-error' : 'input-default' }}"

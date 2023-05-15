@@ -7,7 +7,7 @@ body
 
 .container
     width: 100%
-    max-width: 1100px !important
+    max-width: 1400px !important
 
 
 header .fa
@@ -36,6 +36,9 @@ header .fa
 
     nav
         display: inline-flex
+
+        @media screen and (max-width: 880px)
+            display: none
 
 
 html.dark
@@ -114,6 +117,10 @@ html.dark
             div.sidebar-content
                 padding: 0
 
+                .navbar-nav
+                    li
+                        margin-bottom: 0.5em
+
 
 .public
     .public-content
@@ -156,10 +163,14 @@ header.page-header
         gap: 0.5em
 
         nav
-            a
+            a:not(.dropdown-item)
                 margin: 0 0.5em
                 padding: 0 0.5em
                 text-decoration: underline
+
+            .dropdown-item
+                display: block
+                margin-bottom: 0.5em
 
 
 footer.page-footer
@@ -293,9 +304,126 @@ fieldset
 
         button
             margin-top: 0
+            padding: 8px 6px 8px 8px
 
         .notification-inner
             display: flex
             flex-direction: row
             align-items: center
             gap: 0.5em
+
+            p.message
+                margin: 0
+
+button, .button
+    i.fa
+        margin-right: 2px
+
+input[readonly]
+    background-color: $gray-20
+    cursor: not-allowed
+
+.checkbox-container
+    label
+        margin-top: 0
+
+        input
+            margin-bottom: 0
+
+.dashboard-card-grid
+    margin-bottom: 0
+    padding: 0
+    display: grid
+    justify-items: stretch
+    align-items: center
+    column-gap: 1em
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+    justify-content: space-between
+    list-style-type: none
+
+select
+    background: white
+
+a.nav-link.active
+    font-weight: 700
+    background-color: $gray-20
+
+
+html.dark
+    a.nav-link.active
+        background-color: $accent-dark
+
+    .clean-modal-content
+        .box.white
+            background-color: $bg-content
+
+
+    .sidenav
+        background-color: $black
+
+
+    #main-menu-offcanvas-toggle
+        color: white
+        background-color: transparent
+        border: 1px solid white
+
+        &:hover, &:focus
+            background-color: $primary-light
+            border: 1px solid white
+
+
+.sidenav
+    height: 100%
+    width: 0
+    position: fixed
+    z-index: 4
+    top: 0
+    left: 0
+    background-color: $gray-20
+    overflow-x: hidden
+    transition: 0.5s
+    padding: 0
+    box-shadow: 4px 0 6px -4px #666
+
+    @media screen and (max-height: 550px)
+        padding-top: 1em
+
+
+    #close-sidenav-button
+        text-decoration: none
+        position: absolute
+        top: 0
+        right: 12px
+        font-size: 24px
+
+        &:hover, &:focus
+            color: lightblue
+
+    #mobile-menu
+        padding: 60px 0.5em 0.5em
+
+        #main-menu
+            display: flex
+            row-gap: 1em
+            flex-direction: column
+            align-items: flex-start
+
+            a
+                i
+                    margin-right: 4px
+
+            .dropdown-content
+                display: flex
+                flex-direction: column
+                line-height: 2
+                padding-left: 2em
+                border: none
+                position: initial
+                width: calc(300px - 1em)
+
+
+#main-menu-offcanvas-toggle
+    margin-top: 0
+
+    @media screen and (min-width: 881px)
+        display: none

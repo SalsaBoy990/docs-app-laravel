@@ -8,7 +8,7 @@
         </div>
         @if (Route::has('login'))
             <div class="main-navigation">
-                <nav>
+                <nav id="main-menu">
                     @auth
                         <a href="{{ url('/home') }}">
                             <i class="fa fa-home" aria-hidden="true"></i>Home
@@ -60,15 +60,54 @@
                             <a href="{{ route('register') }}" class="">Register</a>
                         @endif
                     @endauth
-                    <span
-                        class="pointer darkmode-toggle"
-                        rel="button"
-                        @click="toggleDarkMode"
-                        x-text="isDarkModeOn() ? '🔆' : '🌒'"
-                        :title="isDarkModeOn() ? 'Light mode' : 'Dark mode'"
-                    >
-                    </span>
                 </nav>
+
+                @php
+                    $light = __('Light mode');
+                    $dark = __('Dark mode');
+                @endphp
+
+                <span
+                    class="pointer darkmode-toggle"
+                    rel="button"
+                    @click="toggleDarkMode"
+                    x-text="isDarkModeOn() ? '🔆' : '🌒'"
+                    :title="isDarkModeOn() ? '{{ $light }}' : '{{ $dark }}'"
+                >
+                    </span>
+
+                <div x-data="offCanvasMenuData">
+                    <button id="main-menu-offcanvas-toggle"
+                            @click="toggleOffcanvasMenu()"
+                            class="primary alt margin-left-0-5"
+                            data-collapse-toggle="navbar-default"
+                            type="button"
+                            aria-controls="navbar-default"
+                            aria-expanded="false"
+                    >
+                        <span class="sr-only">{{__('Open main menu')}}</span>
+                        <i :class="sidenav === true ? 'fa fa-times' : 'fa fa-bars'" aria-hidden="true"></i>
+                    </button>
+                    <div class="sidenav relative"
+                         tabindex="-1"
+                         id="main-menu-offcanvas"
+                         @click.outside="closeOnOutsideClick()"
+                    >
+                        <a href="javascript:void(0)"
+                           id="main-menu-close-button"
+                           @click="closeOffcanvasMenu()"
+                           class="close-btn fs-18 absolute topright padding-0-5"
+                        >
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+
+                        <div id="mobile-menu"></div>
+
+                    </div>
+
+                </div>
+
+
             </div>
         @endif
     </div>
