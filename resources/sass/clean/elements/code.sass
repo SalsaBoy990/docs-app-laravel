@@ -1,5 +1,9 @@
-code, pre, samp
-    font-family: $mono !important
+code,
+code[class*=language-],
+pre,
+pre[class*=language-]
+samp
+    font-family: $mono !important  // reason: prism css overwrite
     font-size: 1em
 
 
@@ -8,7 +12,8 @@ code
     display: block
 
 
-pre
+pre,
+pre[class*=language-]
     display: block
     white-space: pre
     overflow-x: auto
@@ -18,4 +23,4 @@ pre
     margin: 1em 0
 
     @media screen and (max-width: $s-800)
-        font-size: 0.875em !important
+        font-size: 0.875em  // prism css overwrite
