@@ -2,7 +2,6 @@
     <div class="clean-modal-content content-600 card card-4 animate-top relative" x-trap="modal">
         <div class="box primary round-top">
                         <button @click="closeModal()"
-                                style="margin-top: 0.4em; margin-bottom: 0.5em"
                                 class="close-button fs-18 primary topright border-0 round-top-right text-white"
                             >
                             <i class="fa fa-times" aria-hidden="true"></i>
