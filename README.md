@@ -1,3 +1,12 @@
+# Setup the project
+
+1. Install composer and npm packages
+2. Set up variables in **.env** file (db)
+3. Run `npm run dev` and `php artisan serve`
+4. Run migrations and seed: `php artisan migrate --seed`
+5. You can register on the site.
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
