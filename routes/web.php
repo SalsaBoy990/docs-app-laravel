@@ -4,6 +4,9 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CategoryUserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\LocalizationController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\Frontend\PostController as PostFrontendController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +29,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+/* Get language, set language in session */
+Route::get('lang/{locale}', [LocalizationController::class, 'index'])->name('lang.index');
+
 
 // Routes only for authenticated users...
 Route::group(
@@ -33,6 +39,19 @@ Route::group(
     function () {
 
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
+        /* Posts */
+        Route::post('post/{category}', [PostController::class, 'store'])->name('post.store');
+        Route::get(
+            'post/create/{category}', [PostController::class, 'create'])->name('post.create');
+
+        Route::get(
+            'post/{post}/category/{category}', [PostController::class, 'edit'])->name('post.edit');
+
+        Route::put('post/{post}', [PostController::class, 'update'])->name('post.update');
+        Route::delete('post/{post}', [PostController::class, 'destroy'])->name('post.destroy');
+
 
         /* Categories */
         Route::post('category', [CategoryController::class, 'store'])->name('category.store');
@@ -56,5 +75,17 @@ Route::group(
         Route::get('/category/{category}/user/{user}/upload', [CategoryUserController::class, 'attachUploadPermission'])->name('permission.upload.attach');
         Route::get('/category/{category}/user/{user}/download/detach', [CategoryUserController::class, 'detachDownloadPermission'])->name('permission.download.detach');
         Route::get('/category/{category}/user/{user}/upload/detach', [CategoryUserController::class, 'detachUploadPermission'])->name('permission.upload.detach');
+    }
+);
+
+
+// Routes only for authenticated users...
+Route::group(
+    ['middleware' => [], 'prefix' => ''],
+    function () {
+        /* Posts */
+        Route::get('posts', [PostFrontendController::class, 'index'])->name('post.frontend.index');
+        Route::get( 'post/{slug}', [PostFrontendController::class, 'show'])->name('post.frontend.show');
+        Route::get( 'post/category/{name}', [PostFrontendController::class, 'category'])->name('post.frontend.category');
     }
 );

@@ -2,10 +2,17 @@ button
     border: 1px solid $primary-light
     background-color: $primary-light
 
+
 .button
     border: 1px solid $primary-light
     &:hover, &:focus
         background-color: white
+
+
+button, .button
+    i.fa
+        margin-right: 2px
+
 
 button,
 .button,
@@ -179,6 +186,18 @@ button.warning
             background-color: $warning-dark
 
 
+.button.gray-button,
+button.gray-button
+    color: white
+    background-color: $gray-60
+    border-color: $gray-60
+
+    &:hover
+        background-color: $gray-80
+        border-color: $gray-80
+        color: white
+
+
 .button.black-button,
 button.black-button
     background-color: $black
@@ -226,7 +245,7 @@ button.transparent
     background-color: transparent
     color: inherit
 
-    &:hover, &:focus
+    &:hover, &:active
         background-color: $primary-light
         color: white
 
@@ -251,8 +270,6 @@ button.transparent
 
 button.close-button,
 span.close-button
-    margin-top: 0.4em
-    margin-bottom: 0.5em
     border: 1px solid transparent
 
     &:hover
@@ -306,4 +323,19 @@ a.button-square
 
 
 .pagination-group
+    justify-content: center
     column-gap: 0.25em
+
+    .button.transparent
+        &:hover, &:active
+            color: white
+            background-color: $gray-60
+
+    .button.disabled
+        &:hover, &:active
+            color: inherit
+            background-color: transparent
+
+    .button.active
+        &:hover, &:active
+            background-color: $gray-80

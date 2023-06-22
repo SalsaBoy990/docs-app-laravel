@@ -6,7 +6,7 @@
                             >
                             <i class="fa fa-times" aria-hidden="true"></i>
                         </button>
-            <h3 class="text-white h4">{{ $title }}</h3>
+            <h3 class="text-white fs-18">{{ $title }}</h3>
         </div>
         <div class="box white padding-bottom-2">
             {{ $slot }}

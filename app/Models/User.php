@@ -44,6 +44,7 @@ class User extends Authenticatable
         'permissions' => 'array'
     ];
 
+
     /**
      * User has many categories
      * this will be used for authorization
@@ -54,6 +55,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Category::class);
     }
+
 
     /**
      * Name of the permissions

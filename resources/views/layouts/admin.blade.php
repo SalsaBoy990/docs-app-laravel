@@ -9,7 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Docs App</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{{ url('assets/fontawesome-6.4.0/css/fontawesome.css') }}" rel="stylesheet">
+    <link href="{{ url('assets/fontawesome-6.4.0/css/solid.css') }}" rel="stylesheet">
+
     <link href="{{ url('css/trongate.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ url('css/app.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ url('css/prism.css') }}" rel="stylesheet" type="text/css"/>
@@ -18,7 +20,7 @@
     @vite(['resources/sass/main.sass', 'resources/js/app.js'])
     @livewireStyles
 
-    <x-admin.head.tinymce-config/>
+    @yield('head')
 
 </head>
 <body @scroll="setScrollToTop()">

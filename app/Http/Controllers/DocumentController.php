@@ -9,10 +9,12 @@ use App\Models\Category;
 use App\Support\InteractsWithBanner;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Gate;
+use Throwable;
 
 class DocumentController extends Controller
 {
     use InteractsWithBanner;
+
 
     /**
      * Store a newly created resource in storage.
@@ -22,9 +24,10 @@ class DocumentController extends Controller
      *
      * @return RedirectResponse
      */
-    public function store(StoreDocumentRequest $request, Category $category): RedirectResponse {
+    public function store(StoreDocumentRequest $request, Category $category): RedirectResponse
+    {
         if (Gate::denies('authorize_upload_to_category', $category)) {
-            $this->banner('Nincs feltöltési jogod a kategóriához.', 'danger');
+            $this->banner('You have no permission to upload to this category.', 'danger');
             return redirect()->route('dashboard');
         }
 
@@ -39,14 +42,16 @@ class DocumentController extends Controller
 
         $success = Document::uploadFile($file, $data);
         if (!$success) {
-            $this->banner('Hiba a dokumentum-feltöltés során.', 'danger');
+            $this->banner('Error during document upload.', 'danger');
             return redirect()->route('dashboard');
         }
 
         Document::create($data);
-        $this->banner(__('Dokumentum sikeresen feltöltve'));
+
+        $this->banner(__('Document successfully uploaded.'));
         return redirect()->route('dashboard');
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -56,13 +61,14 @@ class DocumentController extends Controller
      *
      * @return RedirectResponse
      */
-    public function update(UpdateDocumentRequest $request, Document $document): RedirectResponse {
+    public function update(UpdateDocumentRequest $request, Document $document): RedirectResponse
+    {
         $userId = intval(auth()->user()->id);
         $categoryId = intval($request->category_id);
         $category = Category::findOrFail($categoryId);
 
         if (Gate::denies('authorize_upload_to_category', $category)) {
-            $this->banner('Nincs feltöltési jogod a kategóriához.', 'danger');
+            $this->banner('You have no permission to upload to this category.', 'danger');
             return redirect()->route('dashboard');
         }
 
@@ -79,17 +85,18 @@ class DocumentController extends Controller
         if ($file) {
             $success = Document::uploadFile($file, $data);
             if (!$success) {
-                $this->banner('Hiba a dokumentum-feltöltés során.', 'danger');
+                $this->banner('Error during document upload.', 'danger');
                 return redirect()->route('dashboard');
             }
         }
 
         $document->update($data);
 
-        $this->banner(__('Dokumentum sikeresen módosítva!'));
+        $this->banner(__('Successfully modified the document!'));
 
         return redirect()->route('dashboard');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -97,13 +104,14 @@ class DocumentController extends Controller
      * @param  Document  $document
      *
      * @return RedirectResponse
-     * @throws \Throwable
+     * @throws Throwable
      */
-    public function destroy(Document $document): RedirectResponse {
+    public function destroy(Document $document): RedirectResponse
+    {
         $oldName = htmlentities($document->view_name);
         $document->deleteOrFail();
 
-        $this->banner('"' . $oldName . '"' . ' sikeresen törölve!');
+        $this->banner('"'.$oldName.'"'.' successfully deleted!');
         return redirect()->route('dashboard');
     }
 }

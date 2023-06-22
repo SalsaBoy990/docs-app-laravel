@@ -53,19 +53,22 @@ class Document extends Model
      *
      * @return Carbon
      */
-    protected function getLastModifiedAttribute(): Carbon {
+    protected function getLastModifiedAttribute(): Carbon
+    {
         // Storage::lastModified returns unix timestamp
         return Carbon::createFromTimestamp(Storage::lastModified($this->file_path));
     }
+
 
     /**
      * Accessor for filesize
      *
      * @return string
      */
-    protected function getFileSizeAttribute(): string {
+    protected function getFileSizeAttribute(): string
+    {
         // return in KB, because Storage::size returns size in bytes
-        return round(Storage::size($this->file_path) / 1024) . " KB";
+        return round(Storage::size($this->file_path) / 1024)." KB";
     }
 
 
@@ -110,8 +113,8 @@ class Document extends Model
     /**
      * Handle file upload
      *
-     * @param mixed $file
-     * @param array $data
+     * @param  mixed  $file
+     * @param  array  $data
      *
      * @return bool
      */
@@ -120,7 +123,7 @@ class Document extends Model
         if ($file !== null) {
             if ($file->isValid()) {
                 $data['original_filename'] = $file->getClientOriginalName();
-                $fileName = time() . '-' . $data['original_filename'];
+                $fileName = time().'-'.$data['original_filename'];
 
                 $filePath = $file->storeAs('public/uploads', $fileName);
                 if (!$filePath) {

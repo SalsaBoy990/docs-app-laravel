@@ -25,6 +25,7 @@ class Delete extends Component
         'categoryId' => 'required|int|min:1',
     ];
 
+
     public function mount(string $modalId, $category, bool $hasSmallButton = false)
     {
         $this->modalId = $modalId;
@@ -41,6 +42,7 @@ class Delete extends Component
         return view('livewire.category.delete');
     }
 
+
     public function deleteCategory()
     {
         // validate user input
@@ -54,8 +56,6 @@ class Delete extends Component
             },
             $deleteAttempts = 2
         );
-        session()->forget('categories');
-        // session()->forget('selectedCategory');
 
         $this->banner('A kategória törlése sikeres volt.');
         return redirect()->route('dashboard');

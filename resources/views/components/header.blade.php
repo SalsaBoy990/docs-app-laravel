@@ -62,6 +62,8 @@
                     @endauth
                 </nav>
 
+                <x-language-switcher></x-language-switcher>
+
                 @php
                     $light = __('Light mode');
                     $dark = __('Dark mode');

@@ -3,12 +3,12 @@
 }">
 
     @if ($hasSmallButton)
-        <button @click="isModalOpen = true" class="fs-14 bold danger" title="{{ __('Kategória törlése') }}">
-            <i class="fa fa-trash-o" aria-hidden="true"></i>
+        <button @click="isModalOpen = true" class="fs-12 bold danger" title="{{ __('Kategória törlése') }}">
+            <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
         </button>
     @else
-        <button @click="isModalOpen = true" class="fs-14 bold danger">
-            <i class="fa fa-trash-o" aria-hidden="true"></i>
+        <button @click="isModalOpen = true" class="fs-12 bold danger">
+            <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
             <span>{{ __('Törlés') }}</span>
         </button>
     @endif

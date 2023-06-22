@@ -3,11 +3,11 @@
 }">
 
     @if ($hasSmallButton)
-        <button @click="isModalOpen = true" class="fs-14 bold info" title="{{ __('Kategória szerkesztése') }}">
+        <button @click="isModalOpen = true" class="fs-12 bold info" title="{{ __('Kategória szerkesztése') }}">
             <i class="fa fa-pencil" aria-hidden="true"></i>
         </button>
     @else
-        <button @click="isModalOpen = true" class="fs-14 bold info">
+        <button @click="isModalOpen = true" class="fs-12 bold info">
             <i class="fa fa-pencil" aria-hidden="true"></i>
             <span>{{ __('Szerkeszt') }}</span>
         </button>

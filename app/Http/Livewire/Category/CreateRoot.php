@@ -26,12 +26,14 @@ class CreateRoot extends Component
         'name' => 'required|string|min:1|max:255',
     ];
 
+
     public function mount(bool $hasSmallButton)
     {
         $this->title = 'Kategória hozzáadása';
         $this->modalId = 'm-new-root';
         $this->hasSmallButton = $hasSmallButton;
     }
+
 
     public function __construct()
     {
@@ -44,10 +46,12 @@ class CreateRoot extends Component
         parent::__construct();
     }
 
+
     public function render()
     {
         return view('livewire.category.create-root');
     }
+
 
     public function createCategory()
     {
@@ -75,8 +79,6 @@ class CreateRoot extends Component
             },
             $saveAttempts = 2
         );
-
-        session()->forget('categories');
 
         $this->banner('Új kategória sikeresen hozzáadva.');
         return redirect()->route('dashboard');

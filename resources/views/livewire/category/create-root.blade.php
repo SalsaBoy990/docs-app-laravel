@@ -3,11 +3,11 @@
 }">
 
     @if ($hasSmallButton)
-        <button @click="isModalOpen = true" class="fs-14 bold primary button margin-top-0" title="{{ __('Új kategória') }}">
+        <button @click="isModalOpen = true" class="fs-12 bold primary button margin-top-0" title="{{ __('Új kategória') }}">
             <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
     @else
-        <button @click="isModalOpen = true" class="fs-14 bold primary button margin-top-0">
+        <button @click="isModalOpen = true" class="fs-12 bold primary button margin-top-0">
             <i class="fa fa-plus" aria-hidden="true"></i>
             Új kategória
         </button>
@@ -21,7 +21,6 @@
                        type="text"
                        class="{{ $errors->has('name') ? 'input-error' : 'input-default' }}"
                        name="name"
-                       value=""
                        placeholder="kategória neve">
 
                 <div class="{{ $errors->has('name') ? 'text-rose-500' : 'text-gray-500' }}">

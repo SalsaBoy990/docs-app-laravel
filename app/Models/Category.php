@@ -36,6 +36,7 @@ class Category extends Model
         'content' => CleanHtml::class,
     ];
 
+
     /**
      * Category has many documents
      *
@@ -46,6 +47,7 @@ class Category extends Model
         return $this->hasMany(Document::class);
     }
 
+
     /**
      * Category has children categories
      *
@@ -55,6 +57,7 @@ class Category extends Model
     {
         return $this->hasMany(Category::class)->with('categories');
     }
+
 
     /**
      * Category belongs to many users
@@ -69,11 +72,22 @@ class Category extends Model
 
 
     /**
+     * Posts belonging to categories
+     *
+     * @return BelongsToMany
+     */
+    public function posts(): BelongsToMany
+    {
+        return $this->belongsToMany(Post::class, 'posts_categories');
+    }
+
+
+    /**
      * Attach permissions
      *
-     * @param mixed $user
-     * @param mixed $category
-     * @param string $permission
+     * @param  mixed  $user
+     * @param  mixed  $category
+     * @param  string  $permission
      *
      * @return bool
      */
@@ -123,9 +137,9 @@ class Category extends Model
     /**
      * Detach permissions
      *
-     * @param User $user
-     * @param Category $category
-     * @param string $permission
+     * @param  User  $user
+     * @param  Category  $category
+     * @param  string  $permission
      *
      * @return bool
      */
@@ -165,12 +179,13 @@ class Category extends Model
         return true;
     }
 
+
     /**
      * Check if permission exists
      *
-     * @param mixed $user
-     * @param mixed $category
-     * @param string $permission
+     * @param  mixed  $user
+     * @param  mixed  $category
+     * @param  string  $permission
      *
      * @return bool
      */

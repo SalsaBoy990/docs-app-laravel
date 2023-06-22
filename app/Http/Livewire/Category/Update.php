@@ -44,6 +44,7 @@ class Update extends Component
         return view('livewire.category.update');
     }
 
+
     public function updateCategory()
     {
         // validate user input
@@ -60,9 +61,6 @@ class Update extends Component
             },
             $updateAttempts = 2
         );
-        session()->forget('categories');
-        session()->forget('selectedCategory');
-        session(['selectedCategory' => $this->category]);
 
         $this->banner('Kategória sikeresen frissítve.');
         return redirect()->route('dashboard')->with( [ 'selectedCategory' => $this->category]);

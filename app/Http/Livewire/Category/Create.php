@@ -69,9 +69,6 @@ class Create extends Component
             $saveAttempts = 2
         );
 
-        session()->forget('categories');
-        // session()->forget('selectedCategory');
-
         $this->banner('Új alkategória sikeresen hozzáadva.');
         return redirect()->route('dashboard');
     }

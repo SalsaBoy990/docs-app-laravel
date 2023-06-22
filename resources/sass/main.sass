@@ -63,7 +63,7 @@ html.dark
         width: 100%
         margin: 0.5em auto 0
         display: grid
-        grid-template-columns: 360px calc(100% - 392px)
+        grid-template-columns: 400px calc(100% - 432px)
         grid-template-areas: 'sidebar main-content'
         gap: 2em
 
@@ -238,7 +238,8 @@ footer.page-footer
 
 /* show the nested list */
 .active
-    display: block !important // reason: important not to overwrite
+    display: block !important
+// reason: important not to overwrite
 
 .active-category
     background-color: gainsboro
@@ -261,7 +262,8 @@ html.dark
 /* DROPDOWN END */
 
 [x-cloak], .hidden
-    display: none !important // reason: important not to overwrite
+    display: none !important
+// reason: important not to overwrite
 
 fieldset
     padding: 0
@@ -427,3 +429,39 @@ html.dark
 
     @media screen and (min-width: 881px)
         display: none
+
+#main-menu
+    a
+        font-size: 14px
+
+.nested-list-container
+    li
+        list-style-type: none
+        padding-top: 1em
+        padding-bottom: 1em
+        border: 1px solid $gray-20
+
+
+.language-switcher-component
+
+    .language-switcher-button
+        display: flex
+        column-gap: 4px
+        flex-direction: row
+        flex-wrap: nowrap
+        margin-top: 0
+
+        img, svg
+            height: 14px
+            width: auto
+
+    .dropdown-content
+        min-width: unset
+        a
+            img
+                height: 14px
+                width: auto
+
+
+button.close-button
+    margin-top: 0 !important

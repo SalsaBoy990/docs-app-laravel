@@ -403,7 +403,7 @@
 
             <div class="button-group" style="display: flex; gap: 10px">
                 <button class="button-circle ripple danger">
-                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
                 </button>
 
                 <button class="button-square ripple info">

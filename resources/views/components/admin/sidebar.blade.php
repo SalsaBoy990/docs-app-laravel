@@ -1,6 +1,6 @@
 <aside>
     <header>
-        <h3 class="text-white">Table of Content</h3>
+        <h3 class="text-white fs-18">Table of Content</h3>
     </header>
     <div class="sidebar-content">
 

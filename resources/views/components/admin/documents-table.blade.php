@@ -1,41 +1,42 @@
 <div>
     @if (count($documents) === 0)
-        <p>Még nincs dokumentum feltöltve ehhez a kategóriához.</p>
+        <p>{{ __('There are no documents uploaded in this category yet.') }}</p>
     @else
         <table class="fs-14">
             <thead>
             <tr>
-                <th scope="col">{{ __('Fájl') }}</th>
-                <th scope="col">{{ __('Műveletek') }}</th>
+                <th scope="col">{{ __('File') }}</th>
+                <th scope="col">{{ __('Actions') }}</th>
             </tr>
             </thead>
             <tbody>
             @foreach ($documents as $document)
                 <tr>
                     <td>
-
                         @can('authorize_download_from_category', $selectedCategory)
-                            <h4 class="margin-top-0 margin-bottom-0-5">
+                            <h3 class="margin-top-0 margin-bottom-0-5 fs-16">
                                 <a href="{{ $document->file_link }}" download>
                                     <i class="fa fa-download" aria-hidden="true"></i>
                                     {{ $document->view_name }}</a>
-                            </h4>
+                            </h3>
+
                             @if($document->file_link)
                                 <!--<img src="{{ $document->file_link }}" class="p-1 bg-white border rounded w-20"
                             alt="{{ $document->view_name }}" />-->
                             @endif
+
                         @else
-                            <h4 class="margin-top-0 margin-bottom-0-5">
-                                {{ $document->view_name }}
-                            </h4>
-                            <div>Nincs letöltési jogod a kategóriához!</div>
+
+                            <h3 class="margin-top-0 margin-bottom-0-5 fs-16">{{ $document->view_name }}</h3>
+                            <div>{{ __('You have no download right in this category.') }}</div>
+
                         @endcan
 
                         <ul class="margin-top-bottom-0-5">
-                            <li>Eredeti fájlnév: <b>{{ $document->original_filename }}</b></li>
-                            <li>Verzió: <b>{{ $document->version }}</b></li>
-                            <li>Méret: <b>{{ $document->filesize }}</b></li>
-                            <li>Feltöltve: <b>{{ $document->last_modified->diffForHumans() }}</b></li>
+                            <li>{{ __('Original filename: ') }}<b>{{ $document->original_filename }}</b></li>
+                            <li>{{ __('Version: ') }}<b>{{ $document->version }}</b></li>
+                            <li>{{ __('Filesize: ') }}<b>{{ $document->filesize }}</b></li>
+                            <li>{{ __('Uploaded at: ') }}<b>{{ $document->last_modified->diffForHumans() }}</b></li>
                         </ul>
 
                     </td>
@@ -77,12 +78,12 @@
                                         <div>
 
                                             <div class="margin-top-1">
-                                                Feltöltött fájl:<br>
+                                                {{ __('Uploaded file:') }}<br>
                                                 <b>{{ $document->file_link }}</b>
                                             </div>
 
                                             <div class="margin-bottom-1">
-                                                <label for="file_path">{{ __('Fájl cseréje (opcionális)') }}</label>
+                                                <label for="file_path">{{ __('Change file (optional)') }}</label>
                                                 <input
                                                     class="{{ $errors->has('file_path') ? ' border-rose-400' : 'border-gray-300' }}"
                                                     type="file"
@@ -96,13 +97,13 @@
                                         </div>
 
 
-                                        <button type="submit" class="button">Mentés</button>
+                                        <button type="submit" class="primary">{{ __('Save') }}</button>
                                         <button
                                             type="button"
                                             class="alt"
                                             @click="closeModal()"
                                         >
-                                            {{ __('Mégsem') }}
+                                            {{ __('Cancel') }}
                                         </button>
 
                                     </form>
@@ -112,12 +113,14 @@
                             <div x-data="modalData">
                                 <button type="button"
                                         class="danger alt"
-                                        title="Törlés"
+                                        title="{{ __('Delete') }}"
                                         @click="openModal()">
 
-                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
                                 </button>
-                                <x-admin.modal :title="'Biztosan törölni akarod?'">
+
+                                <x-admin.modal title="{{ __('Are you sure you want to delete it') }}">
+
                                     <form action="{{ route('document.destroy', $document->id) }}"
                                           method="post"
                                           enctype="application/x-www-form-urlencoded"
@@ -127,19 +130,10 @@
                                         @csrf
                                         @method('delete')
 
-                                        <h4>{{ $document->view_name }}</h4>
-                                        <button type="submit"
-                                                class="danger"
-                                                title="Törlés">
-                                            Törlés
-                                        </button>
-                                        <button
-                                            type="button"
-                                            class="alt"
-                                            @click="closeModal()"
-                                        >
-                                            {{ __('Mégsem') }}
-                                        </button>
+                                        <p class="fs-18"><strong>{{ $document->view_name }}</strong></p>
+
+                                        <button type="submit" class="danger" title="{{ __('Delete') }}">{{ __('Delete') }}</button>
+                                        <button type="button" class="alt" @click="closeModal()">{{ __('Cancel') }}</button>
                                     </form>
                                 </x-admin.modal>
                             </div>
